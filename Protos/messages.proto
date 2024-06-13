@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcMessageService";
+
+import "google/protobuf/empty.proto";
+
+service MessageService {
+    rpc SendMessage (MessageRequest) returns (google.protobuf.Empty);
+    rpc GetAllMessages (google.protobuf.Empty) returns (MessageList);
+}
+
+message MessageRequest {
+    string message = 1;
+}
+
+message Message {
+    string content = 1;
+}
+
+message MessageList {
+    repeated Message messages = 1;
+}
+
